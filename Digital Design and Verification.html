@@ -1,0 +1,822 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Digital Design and Verification</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.highlight-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.block-color-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: undefined; }
+.select-value-color-pink { background-color: rgba(225, 136, 179, 0.27); }
+.select-value-color-purple { background-color: rgba(168, 129, 197, 0.27); }
+.select-value-color-green { background-color: rgba(123, 183, 129, 0.27); }
+.select-value-color-gray { background-color: rgba(84, 72, 49, 0.15); }
+.select-value-color-transparentGray { background-color: undefined; }
+.select-value-color-translucentGray { background-color: undefined; }
+.select-value-color-orange { background-color: rgba(224, 124, 57, 0.27); }
+.select-value-color-brown { background-color: rgba(210, 162, 141, 0.35); }
+.select-value-color-red { background-color: rgba(244, 171, 159, 0.4); }
+.select-value-color-yellow { background-color: rgba(236, 191, 66, 0.39); }
+.select-value-color-blue { background-color: rgba(93, 165, 206, 0.27); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="1bcea88d-e67b-8093-9ff4-d7113bb9d992" class="page sans"><header><h1 class="page-title">Digital Design and Verification</h1><p class="page-description"></p></header><div class="page-body"><h1 id="1bdea88d-e67b-80cc-a53e-f8200c6a1b6c" class="">Interview Questions</h1><p id="1bdea88d-e67b-8006-ad8c-c9cf42b1bdb8" class="">
+</p><ol type="1" id="1bcea88d-e67b-801b-9c50-d65c8e04f477" class="numbered-list" start="1"><li>What does <strong>simulation</strong>, <strong>synthesis </strong>and <strong>implementation </strong>do?</li></ol><ul id="1bcea88d-e67b-80fa-8e7c-f93914ecf646" class="bulleted-list"><li style="list-style-type:disc">Simulation uses software to run Verilog/SV code.</li></ul><ul id="1bcea88d-e67b-802f-812e-d2175865a176" class="bulleted-list"><li style="list-style-type:disc">Synthesis convert HDL(Hardware Description Language) into Gat-Level Netlist.</li></ul><ul id="1bcea88d-e67b-80d9-958d-c1a0fa485545" class="bulleted-list"><li style="list-style-type:disc">Implementation converts Gate-Level Netlist to hardware layout(FPGA).</li></ul><p id="1bdea88d-e67b-80ec-8ee0-e88fc96b4e28" class="">
+</p><ol type="1" id="1bcea88d-e67b-80cd-a4e7-d27b4e8f2f20" class="numbered-list" start="2"><li>Blocking statement <code>=</code> and Non-blocking statement <code>&lt;=</code>.</li></ol><ul id="1bdea88d-e67b-8016-a4c0-dea5e9ee225a" class="bulleted-list"><li style="list-style-type:disc">Blocking Statement:<ul id="1bdea88d-e67b-801a-95ce-f200de493f21" class="bulleted-list"><li style="list-style-type:circle"><strong>Executes immediately</strong>, in <strong>sequence</strong> (like regular software code).</li></ul><ul id="1bdea88d-e67b-80e3-87dc-e73e04786e9d" class="bulleted-list"><li style="list-style-type:circle">&quot;Blocks&quot; the next statement until it completes.</li></ul><ul id="1bdea88d-e67b-806f-a687-d633f2054316" class="bulleted-list"><li style="list-style-type:circle">Commonly used in <strong>combinational logic</strong> or <strong>testbenches</strong>.</li></ul></li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1bdea88d-e67b-802d-9e40-f899c20f8e21" class="code"><code class="language-Verilog">reg a = 0;
+reg b = 1
+always @(*) begin
+  a = b; //a = 1
+  b = a; //b = 1
+end</code></pre><ul id="1bdea88d-e67b-80a3-8317-f62866edfd44" class="bulleted-list"><li style="list-style-type:disc">Non-blocking statement:<ul id="1bdea88d-e67b-8094-b68d-f4642ce03ddf" class="bulleted-list"><li style="list-style-type:circle"><strong>Schedules</strong> the update to happen <strong>at the end of the time step</strong>.</li></ul><ul id="1bdea88d-e67b-80cd-950f-e566899d8e3e" class="bulleted-list"><li style="list-style-type:circle"><strong>Does not block</strong> execution of the next statement.</li></ul><ul id="1bdea88d-e67b-8031-ac35-d0f86e4c0c11" class="bulleted-list"><li style="list-style-type:circle">Essential for <strong>synchronous (clocked) logic</strong>.</li></ul></li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1bdea88d-e67b-807b-98b8-f94b24afc0b2" class="code"><code class="language-Verilog">reg a = 0;
+reg b = 1;
+
+always @(*) begin
+  a &lt;= b; //a = 1
+  b &lt;= a; //b = 0
+end</code></pre><p id="1bdea88d-e67b-8096-81b7-e10ba8260d27" class="">
+</p><ol type="1" id="1bcea88d-e67b-8050-bf41-fa0b0dee2eab" class="numbered-list" start="3"><li><strong>Synchronous and Asynchronous.</strong></li></ol><ul id="1bcea88d-e67b-80ed-8bf2-cb37fa937a21" class="bulleted-list"><li style="list-style-type:disc"><strong>Synchronous</strong> circuits rely on a common clock signal to synchronize the flow of data.</li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1beea88d-e67b-808d-a551-e382b538a0c0" class="code"><code class="language-Verilog">always (@posedge clk) begin
+	if (reset) begin
+		a &lt;= 0;
+	end else begin
+		a &lt;= b + c;
+	end
+end</code></pre><ul id="1bcea88d-e67b-80cd-8ba4-cd161828580a" class="bulleted-list"><li style="list-style-type:disc"><strong>Asynchronous</strong> circuits don’t rely on a central clock, allowing for more flexibility in their operation.</li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1beea88d-e67b-8035-8d90-ef2cebf59fd8" class="code"><code class="language-Verilog">always (@posedge clk or posedge reset ) begin
+	if (reset) begin
+		a &lt;= 0;
+	end else begin
+		a &lt;= b + c;
+	end
+end</code></pre><p id="1bdea88d-e67b-80d6-a4c4-d13156899c01" class="">
+</p><ol type="1" id="1bcea88d-e67b-802a-bfbd-eaaaf7f5b8a1" class="numbered-list" start="4"><li><code>reg </code> ,<code>wire</code> and <code>logic</code></li></ol><ul id="1bdea88d-e67b-8077-85c0-fba83d94747a" class="bulleted-list"><li style="list-style-type:disc"><code>wire</code>:<ul id="1bdea88d-e67b-8007-babc-e8294fc6d8a6" class="bulleted-list"><li style="list-style-type:circle"><strong>Combinational connections</strong> between modules or within a module.</li></ul><ul id="1bdea88d-e67b-808b-8325-c8d7c1a9c153" class="bulleted-list"><li style="list-style-type:circle">Driving values <strong>from continuous assignments</strong> (<code>assign</code>) or <strong>output ports</strong>.</li></ul></li></ul><ul id="1bdea88d-e67b-80f3-8e24-f3938aed266d" class="bulleted-list"><li style="list-style-type:disc"><code>reg</code>:<ul id="1bdea88d-e67b-80b9-8f77-da30858347f5" class="bulleted-list"><li style="list-style-type:circle">Verilog only</li></ul><ul id="1bdea88d-e67b-8019-a9fe-dc60b0727260" class="bulleted-list"><li style="list-style-type:circle">Holding a value inside <strong>procedural blocks</strong></li></ul></li></ul><ul id="1bdea88d-e67b-80af-8195-fb9fffaabf9a" class="bulleted-list"><li style="list-style-type:disc"><code>logic</code>:<ul id="1bdea88d-e67b-8020-a276-c81e33bb1c56" class="bulleted-list"><li style="list-style-type:circle">Replaces both <code>reg</code> and <code>wire</code> for <strong>most purposes</strong>.</li></ul><ul id="1bdea88d-e67b-802d-b3eb-f1dcef8deaf5" class="bulleted-list"><li style="list-style-type:circle">Does <strong>not allow multiple drivers</strong> like <code>wire</code><br/><br/></li></ul></li></ul><ol type="1" id="1bcea88d-e67b-8001-baa4-fa7100541541" class="numbered-list" start="5"><li>Difference between <strong>Verification </strong>and <strong>Validation</strong>.</li></ol><ul id="1bdea88d-e67b-8029-9439-d964605bab89" class="bulleted-list"><li style="list-style-type:disc">In a verification flow the correctness of the design is being tested against the design specifications. </li></ul><ul id="1bdea88d-e67b-80ff-a3e9-c0e5d031adb5" class="bulleted-list"><li style="list-style-type:disc">In the validation flow the correctness of the design is being tested against the needs of the targeted user. </li></ul><p id="1bdea88d-e67b-80b0-81a7-cb35b58bf42b" class="">
+</p><ol type="1" id="1bcea88d-e67b-801c-9f14-ead3cb9a9e94" class="numbered-list" start="6"><li>What is RISC-V and its Pros and Cons.</li></ol><ul id="1bdea88d-e67b-8005-8ed4-d823dee4c6c3" class="bulleted-list"><li style="list-style-type:disc">RISC - Reduced Instruction Set Computer</li></ul><ul id="1bdea88d-e67b-800a-880e-fc6792100cfc" class="bulleted-list"><li style="list-style-type:disc">Pros:<ul id="1bdea88d-e67b-804c-b3c0-c292096bb748" class="bulleted-list"><li style="list-style-type:circle">Open source and free</li></ul><ul id="1bdea88d-e67b-8028-971d-fd3eaf73cc61" class="bulleted-list"><li style="list-style-type:circle"><strong>Simplicity</strong></li></ul><ul id="1bdea88d-e67b-8069-9dfe-e3c59c387b81" class="bulleted-list"><li style="list-style-type:circle">avoid unnecessary complexity</li></ul><ul id="1beea88d-e67b-80de-a175-d2f2f7af2ed5" class="bulleted-list"><li style="list-style-type:circle">specific tasks</li></ul></li></ul><ul id="1bdea88d-e67b-801d-8679-da7026067439" class="bulleted-list"><li style="list-style-type:disc"><strong>Cons:</strong><ul id="1bdea88d-e67b-8090-9be1-e3230e26e605" class="bulleted-list"><li style="list-style-type:circle"><strong>Limited software ecosystem</strong> (vs ARM/x86)</li></ul><ul id="1bdea88d-e67b-8070-97df-f80827c2e3e4" class="bulleted-list"><li style="list-style-type:circle">lack support<br/><br/></li></ul></li></ul><ol type="1" id="1bcea88d-e67b-80bd-8168-f7a848b0cacf" class="numbered-list" start="7"><li>Difference between <code>Task </code>and <code>Function</code></li></ol><table id="1bdea88d-e67b-8017-857c-f5b049b4453b" class="simple-table"><tbody><tr id="1bdea88d-e67b-80c8-9fc6-f6f4d35f5dcc"><td id="ZFQG" class="" style="width:230px">Feature</td><td id=";bkj" class="" style="width:230px">Function</td><td id="BGYp" class="" style="width:230px">Task</td></tr><tr id="1bdea88d-e67b-8044-9e78-c4f51abc4b1c"><td id="ZFQG" class="" style="width:230px">Purpose</td><td id=";bkj" class="" style="width:230px">compute and return a value</td><td id="BGYp" class="" style="width:230px">executing a sequence of actions</td></tr><tr id="1bdea88d-e67b-8030-8767-e4349be90100"><td id="ZFQG" class="" style="width:230px">Timing Control</td><td id=";bkj" class="" style="width:230px">❌</td><td id="BGYp" class="" style="width:230px">Can include delays (<code>#</code>, <code>@</code>, <code>wait</code>)</td></tr><tr id="1bdea88d-e67b-80bc-a21c-d5ec6d0c42c6"><td id="ZFQG" class="" style="width:230px">Inputs/Outputs</td><td id=";bkj" class="" style="width:230px">Only <strong>input</strong> arguments allowed</td><td id="BGYp" class="" style="width:230px">Can have <strong>input, output, inout</strong> arguments</td></tr><tr id="1bdea88d-e67b-8092-986c-f12cb592e9c3"><td id="ZFQG" class="" style="width:230px"><strong>Reentrant?</strong></td><td id=";bkj" class="" style="width:230px">✅</td><td id="BGYp" class="" style="width:230px">✅</td></tr></tbody></table><p id="1bdea88d-e67b-80b7-9d8d-daddd79a5bd9" class="">
+</p><ol type="1" id="1bcea88d-e67b-8091-9835-fa1f5e71c9ad" class="numbered-list" start="8"><li><code>fork…join</code>, <code>fork…join_any</code> and <code>fork…join_none</code></li></ol><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1bdea88d-e67b-80f7-a59c-d86b003e2d95" class="code"><code class="language-Verilog">//fork...join
+initial begin
+  fork
+    #5 $display(&quot;A done&quot;);
+    #10 $display(&quot;B done&quot;);
+  join
+  $display(&quot;Both A and B finished&quot;);
+end
+//display
+//A done
+//B done
+//Both A and B finished
+
+//fork...join
+initial begin
+  fork
+    #5 $display(&quot;A done&quot;);
+    #10 $display(&quot;B done&quot;);
+  join_any
+  $display(&quot;One of A or B finished&quot;);
+end
+//display
+//A done
+//One of A or B finished
+//B done
+
+//fork...join_none
+initial begin
+  fork
+    #5 $display(&quot;A done&quot;);
+    #10 $display(&quot;B done&quot;);
+  join_none
+  $display(&quot;Continue immediately&quot;);
+end
+//display
+//Continue immediately
+//A done
+//B done</code></pre><p id="1bdea88d-e67b-80f8-b2af-eb508f28f69c" class="">
+</p><ol type="1" id="1bcea88d-e67b-80f9-9328-c8b27c83f692" class="numbered-list" start="9"><li>What is <strong>regular expression</strong> and why it is important in verification process?</li></ol><ul id="1bcea88d-e67b-80fb-8a7e-c73ae224b02a" class="bulleted-list"><li style="list-style-type:disc">A <strong>pattern-matching language</strong> used to search, match, or manipulate strings of text</li></ul><ul id="1bdea88d-e67b-80e8-b2db-eb7c9222be86" class="bulleted-list"><li style="list-style-type:disc">regular expression is <strong>crucial</strong> in modern hardware verification for <strong>flexibility, automation, and powerful pattern matching</strong><br/><br/></li></ul><ol type="1" id="1bcea88d-e67b-8096-8155-ded2f270ca49" class="numbered-list" start="10"><li>Test Plan, Testcase, Testbench difference.</li></ol><ul id="1bdea88d-e67b-80e0-b7dc-de3fcac29169" class="bulleted-list"><li style="list-style-type:disc">Test Plan: A <strong>test plan</strong> is a <strong>document</strong> that outlines:<ul id="1bdea88d-e67b-80c8-81bd-e90d234a303b" class="bulleted-list"><li style="list-style-type:circle">What to be verified</li></ul><ul id="1bdea88d-e67b-80f4-9846-dc3e0a1b762d" class="bulleted-list"><li style="list-style-type:circle">How to be tested</li></ul><ul id="1bdea88d-e67b-8017-8b7f-c07d9b0c9f98" class="bulleted-list"><li style="list-style-type:circle">Coverage goals</li></ul></li></ul><ul id="1bdea88d-e67b-80a5-bcf3-d3b44ae58f7c" class="bulleted-list"><li style="list-style-type:disc">Testcase:<ul id="1bdea88d-e67b-8020-81fb-c20741b19ad9" class="bulleted-list"><li style="list-style-type:circle">Applies stimulus to the DUT</li></ul><ul id="1bdea88d-e67b-80ba-88cd-cef94952a501" class="bulleted-list"><li style="list-style-type:circle">Monitors outputs</li></ul><ul id="1bdea88d-e67b-8021-8061-ce8a3b14701e" class="bulleted-list"><li style="list-style-type:circle">Checks for correctness</li></ul></li></ul><ul id="1bdea88d-e67b-8044-a2ad-c9680ef6e041" class="bulleted-list"><li style="list-style-type:disc">Testbench: the <strong>hardware simulation environment</strong> that wraps around your <strong>Design Under Test (DUT)</strong> and includes:<ul id="1bdea88d-e67b-8032-837b-ff8a2833464d" class="bulleted-list"><li style="list-style-type:circle">Stimulus generation</li></ul><ul id="1bdea88d-e67b-8003-a0e5-f430bc7ce675" class="bulleted-list"><li style="list-style-type:circle">DUT instantiation</li></ul><ul id="1bdea88d-e67b-8017-a9ea-d4c5d1d29109" class="bulleted-list"><li style="list-style-type:circle">Monitors, checkers, scoreboards</li></ul><ul id="1bdea88d-e67b-802d-b77b-f728c5349958" class="bulleted-list"><li style="list-style-type:circle">Assertions and coverage logic</li></ul></li></ul><p id="1bdea88d-e67b-80b4-8208-e185f4aca616" class="">
+</p><ol type="1" id="1bdea88d-e67b-803e-90ec-faf8f83bbc84" class="numbered-list" start="11"><li>What is metastability and how to avoid?</li></ol><ul id="1bdea88d-e67b-8018-98d5-e10cc32d30aa" class="bulleted-list"><li style="list-style-type:disc">a signal reach undefined or unstable state in violating setup time or hold time</li></ul><ul id="1bcea88d-e67b-805c-91e5-d6a0fc958a78" class="bulleted-list"><li style="list-style-type:disc">When does it happen?<ul id="1bdea88d-e67b-803a-9d24-e7da997c265c" class="bulleted-list"><li style="list-style-type:circle"><strong>Asynchronous signal sampling</strong></li></ul><ul id="1bdea88d-e67b-80df-88f2-d26e41bed097" class="bulleted-list"><li style="list-style-type:circle"><strong>Clock domain crossing</strong> (CDC)</li></ul><ul id="1bdea88d-e67b-8022-8c14-fa2af66840b9" class="bulleted-list"><li style="list-style-type:circle"><strong>Unsynchronized inputs from the external world</strong> (buttons, sensors, etc.)</li></ul></li></ul><ul id="1bcea88d-e67b-80cc-8c75-d326f0c1e6e0" class="bulleted-list"><li style="list-style-type:disc">How to prevent?<ul id="1bdea88d-e67b-80a6-be18-cf95dce2c408" class="bulleted-list"><li style="list-style-type:circle"><strong>Double or triple flip-flop synchronizers</strong></li></ul><ul id="1bdea88d-e67b-8054-8578-f9320edc5b44" class="bulleted-list"><li style="list-style-type:circle">Proper setup/hold timing analysis</li></ul></li></ul><p id="1bdea88d-e67b-8000-8c22-f92f2b669048" class="">
+</p><ol type="1" id="1bdea88d-e67b-80c7-aefa-e5ed98f23a05" class="numbered-list" start="12"><li>What is glitch and metastability?</li></ol><ul id="1bdea88d-e67b-8024-a426-e80f3b047a83" class="bulleted-list"><li style="list-style-type:disc">glitch: <strong>timing mismatches</strong> or <strong>logic hazards</strong> in a digital circuit<ul id="1bdea88d-e67b-80f3-837c-c6719d4c1f9f" class="bulleted-list"><li style="list-style-type:circle">solution:<ul id="1bdea88d-e67b-80aa-addf-dcb14acaff1c" class="bulleted-list"><li style="list-style-type:square">Use proper synchronizers</li></ul><ul id="1bdea88d-e67b-8098-b41d-d50d612e6504" class="bulleted-list"><li style="list-style-type:square">Static timing analysis</li></ul></li></ul></li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1bdea88d-e67b-80cd-ba0e-c7566be9e91d" class="code"><code class="language-Verilog">assign y = a &amp; b | c;
+//If a and b change together, but due to delay differences one reaches the gate earlier than the other, y might glitch temporarily even if logically correct in the end.</code></pre><ul id="1bdea88d-e67b-80c3-b6be-c4c786144dd0" class="bulleted-list"><li style="list-style-type:disc">metastability: a <strong>flip-flop</strong> or <strong>latch</strong> enters an <strong>unstable, undefined logic state</strong>—<strong>neither 0 nor 1</strong>—due to a violation of its <strong>timing constraints</strong> (specifically, <strong>setup or hold time</strong>).<ul id="1bdea88d-e67b-8018-a602-fcea4c6f9dd1" class="bulleted-list"><li style="list-style-type:circle">solution:<ul id="1bdea88d-e67b-8044-a05c-c53785fcd41c" class="bulleted-list"><li style="list-style-type:square">Synchronizer</li></ul><ul id="1bdea88d-e67b-8098-8239-d94645ee34cd" class="bulleted-list"><li style="list-style-type:square">Clock Domain Crossing FIFOs<br/><br/></li></ul></li></ul></li></ul><ol type="1" id="1bdea88d-e67b-8089-b23b-ca86c6593694" class="numbered-list" start="13"><li>What is race and risk?</li></ol><ul id="1bdea88d-e67b-80f5-8e29-d593cf9e6c69" class="bulleted-list"><li style="list-style-type:disc">race: <strong>two or more signals </strong>compete to change a variable, one could arrive before than another one</li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1bdea88d-e67b-80d6-8144-dfde67905043" class="code"><code class="language-Verilog">initial begin
+  a = 1;
+  b = 0;
+end
+
+always @(a)
+  b = 1;
+
+always @(a)
+  b = 2;
+</code></pre><ul id="1bdea88d-e67b-8082-a717-dd40016aee67" class="bulleted-list"><li style="list-style-type:disc">risk: cause metastability and glitch</li></ul><ul id="1bdea88d-e67b-8047-9336-fa07cf2b6d77" class="bulleted-list"><li style="list-style-type:disc">solution:<ul id="1bdea88d-e67b-805d-bbf0-dd9fa87915a0" class="bulleted-list"><li style="list-style-type:circle">Synchronizers</li></ul><ul id="1bdea88d-e67b-802c-a8fc-f7cf0326ced3" class="bulleted-list"><li style="list-style-type:circle">Handshake protocols</li></ul><ul id="1bdea88d-e67b-80e9-b658-e1830c7fa3d2" class="bulleted-list"><li style="list-style-type:circle">Clock gating / isolation</li></ul><ul id="1bdea88d-e67b-802b-8721-d2aa8c2a673b" class="bulleted-list"><li style="list-style-type:circle">Formal verification / assertions</li></ul></li></ul><p id="1beea88d-e67b-803f-8039-f15fd114464b" class="">
+</p><ol type="1" id="1beea88d-e67b-80b3-9428-f3ec3cc794e1" class="numbered-list" start="14"><li><code>always_ff</code>, <code>always_comb </code>and <code>always</code></li></ol><ul id="1beea88d-e67b-807a-a1f3-de243ec4e766" class="bulleted-list"><li style="list-style-type:disc"><code>always_ff</code> :<ul id="1beea88d-e67b-80bd-bdba-d0f927b240ad" class="bulleted-list"><li style="list-style-type:circle">For <strong>Sequential Logic</strong></li></ul><ul id="1beea88d-e67b-8026-b88d-ef36804046b3" class="bulleted-list"><li style="list-style-type:circle"><strong>must</strong> contain only clock/reset signals</li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1beea88d-e67b-8010-8a70-d4f209d10e83" class="code"><code class="language-Verilog">always_ff @(posedge clk or posedge reset) begin
+    if (reset)
+        q &lt;= 0;
+    else
+        q &lt;= d;
+end</code></pre></li></ul><ul id="1beea88d-e67b-80be-aa32-d6e7f6655499" class="bulleted-list"><li style="list-style-type:disc"><code>always_comb</code>:<ul id="1beea88d-e67b-80c3-9774-de599391712d" class="bulleted-list"><li style="list-style-type:circle">For <strong>Combinational Logic</strong></li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1beea88d-e67b-8004-bb76-db74182ae8c8" class="code"><code class="language-Verilog">always_comb begin
+    y = a &amp; b;
+end</code></pre></li></ul><ul id="1beea88d-e67b-80b1-a630-f90687710cfa" class="bulleted-list"><li style="list-style-type:disc"><code>always</code>:<ul id="1beea88d-e67b-80b7-8b81-dc6f5330dfb0" class="bulleted-list"><li style="list-style-type:circle">General Purpose</li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1beea88d-e67b-800d-b0e8-c958d6d58c23" class="code"><code class="language-Verilog">always @(posedge clk or posedge reset) begin
+    // Can be sequential logic
+end
+
+always @(*) begin
+    // Can be combinational logic
+end</code></pre></li></ul><p id="1beea88d-e67b-80a5-91df-c50b0060ec66" class="">
+</p><ol type="1" id="1beea88d-e67b-8079-bd78-cc2ce1aae075" class="numbered-list" start="15"><li>FPGA, ASIC, CPU, GPU, NPU difference.</li></ol><ul id="1beea88d-e67b-8011-a1ef-c4dd10836e08" class="bulleted-list"><li style="list-style-type:disc"><strong>FPGA(Field-programmable Gate Array): </strong>a configurable integrated circuit which can be repeatedly programmed after manufacturing</li></ul><ul id="1beea88d-e67b-8010-bf3f-f9ea106f1b8b" class="bulleted-list"><li style="list-style-type:disc"><strong>ASIC(Application Specific Integrated Circuit): </strong>an integrated circuit that implements a specific function</li></ul><ul id="1beea88d-e67b-80af-b2c0-e023e49fcccd" class="bulleted-list"><li style="list-style-type:disc"><strong>GPU(Graphics Processing Unit): <br/>• Excellent at tasks that can be parallelized<br/></strong><br/>• Machine Learning<br/>• Graphics rendering<br/></li></ul><ul id="1beea88d-e67b-80b0-95dc-de9983caa7c7" class="bulleted-list"><li style="list-style-type:disc"><strong>NPU(Neural Processing Unit)</strong>: optimized for artificial intelligence (AI) neural networks, deep learning and machine learning tasks and applications</li></ul><ul id="1beea88d-e67b-8043-baf2-d038edda34f1" class="bulleted-list"><li style="list-style-type:disc"><strong>CPU</strong>(<strong>Central Processing Unit):</strong><ul id="1beea88d-e67b-80f8-8c6a-e231f3d4f3ca" class="bulleted-list"><li style="list-style-type:circle">General-purpose computing tasks</li></ul><ul id="1beea88d-e67b-8018-bd44-e8165db2f938" class="bulleted-list"><li style="list-style-type:circle">Excellent at single-threaded performance<br/><br/></li></ul></li></ul><ol type="1" id="1beea88d-e67b-8052-a3a3-d8fb17f7857b" class="numbered-list" start="16"><li>What is Static Timing Analysis(STA)?</li></ol><ul id="1beea88d-e67b-80ac-96c5-e0953021cfdb" class="bulleted-list"><li style="list-style-type:disc">setup time: The minimum time before the clock edge that data must be stable.</li></ul><ul id="1beea88d-e67b-805c-909d-ee32da0b800c" class="bulleted-list"><li style="list-style-type:disc">hold time: The minimum time after the clock edge that data must remain stable.</li></ul><ul id="1beea88d-e67b-8072-b8d5-cce8e0ee7771" class="bulleted-list"><li style="list-style-type:disc"><strong>Critical Path</strong>: The longest delay path in the circuit, which determines the maximum clock frequency.</li></ul><ul id="1beea88d-e67b-80b2-b7ff-e408d38b3e0a" class="bulleted-list"><li style="list-style-type:disc"><strong>Clock Skew</strong>: The difference in arrival time of the clock signal at different flip-flops.</li></ul><ul id="1beea88d-e67b-80ed-a449-d681043716db" class="bulleted-list"><li style="list-style-type:disc"><strong>Slack</strong>: The difference between the required time and the actual arrival time of a signal.</li></ul><p id="1beea88d-e67b-8042-adae-d69ffd72b042" class="">
+</p><ol type="1" id="1beea88d-e67b-8033-9142-ebfcef42db9a" class="numbered-list" start="17"><li>Gate</li></ol><ul id="1bfea88d-e67b-80c7-ae6c-f08d270d396b" class="bulleted-list"><li style="list-style-type:disc">AND</li></ul><ul id="1bfea88d-e67b-8065-855f-df3bcc91b017" class="bulleted-list"><li style="list-style-type:disc">OR</li></ul><ul id="1bfea88d-e67b-80d8-a8d6-f06d4a75afc7" class="bulleted-list"><li style="list-style-type:disc">NOT</li></ul><ul id="1bfea88d-e67b-80a2-8ca3-d1300ba452d7" class="bulleted-list"><li style="list-style-type:disc">NAND</li></ul><ul id="1bfea88d-e67b-80c7-9163-f15589ea96d6" class="bulleted-list"><li style="list-style-type:disc">NOR</li></ul><ul id="1bfea88d-e67b-803e-b3a5-c956628a535b" class="bulleted-list"><li style="list-style-type:disc">XOR</li></ul><p id="1bfea88d-e67b-8036-8f62-f913f4443264" class="">
+</p><ol type="1" id="1bfea88d-e67b-801b-b3b5-d7696b78c3d7" class="numbered-list" start="18"><li>Bus</li></ol><ul id="1bfea88d-e67b-80eb-aa93-d21aa190ff20" class="bulleted-list"><li style="list-style-type:disc">a <strong>shared communication pathway</strong> that allows multiple components in a system (like CPUs, memory, and peripherals) to <strong>transfer data, addresses, and control signals</strong> with one another</li></ul><ul id="1bfea88d-e67b-808c-85c4-c3927d83fd5f" class="bulleted-list"><li style="list-style-type:disc">types:<ul id="1bfea88d-e67b-80ed-bb34-e8c03bae26d6" class="bulleted-list"><li style="list-style-type:circle">data bus<ul id="1bfea88d-e67b-80c7-90d8-f9e8df812753" class="bulleted-list"><li style="list-style-type:square">carry data</li></ul></li></ul><ul id="1bfea88d-e67b-802d-ae7b-d57bbc782194" class="bulleted-list"><li style="list-style-type:circle">address bus<ul id="1bfea88d-e67b-807e-ab12-ca578b541e92" class="bulleted-list"><li style="list-style-type:square">carry memory address</li></ul></li></ul><ul id="1bfea88d-e67b-8054-ab2e-f06e0906735a" class="bulleted-list"><li style="list-style-type:circle">control bus<ul id="1bfea88d-e67b-8044-8e47-db30eeee84a4" class="bulleted-list"><li style="list-style-type:square">Carries control signals</li></ul></li></ul></li></ul><ul id="1bfea88d-e67b-809e-8a35-d59f835b093d" class="bulleted-list"><li style="list-style-type:disc">AXI - <strong>high-performance</strong>, <strong>highly flexible</strong>, and <strong>pipelined</strong> bus protocol<ul id="1bfea88d-e67b-8012-a219-cfe9fd91ec47" class="bulleted-list"><li style="list-style-type:circle">channels:<ul id="1bfea88d-e67b-80d6-9177-d15dbcbd4d5d" class="bulleted-list"><li style="list-style-type:square">read data(R) - slave → master<ul id="1bfea88d-e67b-80d9-be9d-e1a169f2bfe7" class="bulleted-list"><li style="list-style-type:disc">slave assert valid → master assert ready → transfer</li></ul></li></ul><ul id="1bfea88d-e67b-80a5-8d6f-f0c14e9af3d1" class="bulleted-list"><li style="list-style-type:square">read address(AR) - master → slave<ul id="1bfea88d-e67b-80e5-9d92-f4df236cd399" class="bulleted-list"><li style="list-style-type:disc">master assert valid → slave assert ready → transfer</li></ul></li></ul><ul id="1bfea88d-e67b-80b0-9594-e689db8d3f3e" class="bulleted-list"><li style="list-style-type:square">write data(W) - master → slave<ul id="1bfea88d-e67b-8023-818b-dc41d67abd56" class="bulleted-list"><li style="list-style-type:disc">master assert valid → slave assert ready → transfer</li></ul></li></ul><ul id="1bfea88d-e67b-8027-bca5-f756ed84da50" class="bulleted-list"><li style="list-style-type:square">write address(AW) - master → slave<ul id="1bfea88d-e67b-80a6-bc36-f80d36e6e24d" class="bulleted-list"><li style="list-style-type:disc">master assert valid → slave assert ready → transfer</li></ul></li></ul><ul id="1bfea88d-e67b-806b-926a-ffd238fc67cb" class="bulleted-list"><li style="list-style-type:square">write response(B) - slave → master<ul id="1bfea88d-e67b-80af-8671-ed083f588c2c" class="bulleted-list"><li style="list-style-type:disc">slave assert valid and resp → master assert ready → result of the write</li></ul></li></ul></li></ul></li></ul><p id="1bfea88d-e67b-80f4-aa8c-cdfead73f806" class="">
+</p><ol type="1" id="1bfea88d-e67b-80ed-b8fb-c4534bcecd15" class="numbered-list" start="19"><li>what is macro?</li></ol><ul id="1bfea88d-e67b-8032-9305-e85a53d0e998" class="bulleted-list"><li style="list-style-type:disc">allows for text substitution</li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1bfea88d-e67b-803f-8a91-ea7495e7038b" class="code"><code class="language-Verilog">`define DL1WAYS 4
+`define WIDTH 10</code></pre><p id="1bfea88d-e67b-8052-b0d6-eadcb3f620cd" class="">
+</p><ol type="1" id="1bfea88d-e67b-8058-9aae-d45fe1c30b5b" class="numbered-list" start="20"><li>How does functional verification differ from timing verification?</li></ol><table id="1bfea88d-e67b-8019-8327-f01784bb29c8" class="simple-table"><tbody><tr id="1bfea88d-e67b-8070-a001-df92ad6f0027"><td id="k{rj" class="" style="width:230px">Feature</td><td id="Cenh" class="" style="width:230px">Functional Verification</td><td id="l|&lt;s" class="" style="width:230px">Timing Verification</td></tr><tr id="1bfea88d-e67b-8075-8abc-d159d74a911b"><td id="k{rj" class="" style="width:230px">Checks</td><td id="Cenh" class="" style="width:230px">Logical behavior</td><td id="l|&lt;s" class="" style="width:230px">Temporal/delay constraints</td></tr><tr id="1bfea88d-e67b-808e-af10-efbe39b5b0d2"><td id="k{rj" class="" style="width:230px">Common Tools</td><td id="Cenh" class="" style="width:230px">UVM, Formal</td><td id="l|&lt;s" class="" style="width:230px">STA tools</td></tr><tr id="1bfea88d-e67b-80d7-85c5-cd4cc582530d"><td id="k{rj" class="" style="width:230px">Based on</td><td id="Cenh" class="" style="width:230px">Simulation or formal models</td><td id="l|&lt;s" class="" style="width:230px">Gate-level netlist + timing libs</td></tr><tr id="1bfea88d-e67b-804f-92b7-e6efa39ca307"><td id="k{rj" class="" style="width:230px">Goal</td><td id="Cenh" class="" style="width:230px">right?</td><td id="l|&lt;s" class="" style="width:230px">on time?</td></tr></tbody></table><p id="1bfea88d-e67b-802a-a7b6-f225ccd7eaf7" class="">
+</p><ol type="1" id="1bfea88d-e67b-80e6-a21a-c4959844e0b7" class="numbered-list" start="21"><li>What are the different levels of abstraction used in verification?</li></ol><table id="1bfea88d-e67b-8075-8d7d-cc9aed5cbf9d" class="simple-table"><tbody><tr id="1bfea88d-e67b-80cf-a8dd-e47bcdf338ab"><td id="~gtD" class="" style="width:230px">Abstraction Level</td><td id="iOVq" class="" style="width:230px">Language(s)</td><td id="rReR" class="" style="width:230px">Used For</td></tr><tr id="1bfea88d-e67b-802a-8bd7-de637c7ef466"><td id="~gtD" class="" style="width:230px">Algorithmic / Behavioral</td><td id="iOVq" class="" style="width:230px">C, C++, Python</td><td id="rReR" class="" style="width:230px">Early modeling</td></tr><tr id="1bfea88d-e67b-80bb-9128-f851ed1e4c8e"><td id="~gtD" class="" style="width:230px">TLM</td><td id="iOVq" class="" style="width:230px">SystemC</td><td id="rReR" class="" style="width:230px">SoC-level</td></tr><tr id="1bfea88d-e67b-8036-9695-e299ab366e7d"><td id="~gtD" class="" style="width:230px">RTL</td><td id="iOVq" class="" style="width:230px">SystemVerilog</td><td id="rReR" class="" style="width:230px">Functional verification</td></tr><tr id="1bfea88d-e67b-8070-86f0-c0cb2302b59e"><td id="~gtD" class="" style="width:230px">Gate-Level</td><td id="iOVq" class="" style="width:230px">Verilog</td><td id="rReR" class="" style="width:230px">Timing and post-synthesis checks</td></tr></tbody></table><p id="1bfea88d-e67b-8098-b8e9-c6e2f0cb905f" class="">
+</p><ol type="1" id="1bfea88d-e67b-806a-b3f9-f5f322b15633" class="numbered-list" start="22"><li>What is the difference between a simulator and an emulator?</li></ol><table id="1bfea88d-e67b-80e6-b463-ee606e7b7ec8" class="simple-table"><tbody><tr id="1bfea88d-e67b-8009-beac-ff312df37b88"><td id="OiLz" class="" style="width:230px">Feature</td><td id="~fIw" class="" style="width:230px">Simulator</td><td id="\LmJ" class="" style="width:230px">Emulator</td></tr><tr id="1bfea88d-e67b-8059-a63f-ddd07e2d4f32"><td id="OiLz" class="" style="width:230px">Runs On</td><td id="~fIw" class="" style="width:230px">Software (CPU-based)</td><td id="\LmJ" class="" style="width:230px">Dedicated hardware (FPGAs, ASICs)</td></tr><tr id="1bfea88d-e67b-8011-bdb1-ef17020d2e86"><td id="OiLz" class="" style="width:230px">Speed</td><td id="~fIw" class="" style="width:230px">Slow </td><td id="\LmJ" class="" style="width:230px">faster </td></tr><tr id="1bfea88d-e67b-8044-b545-e1d7a755e016"><td id="OiLz" class="" style="width:230px">Capacity</td><td id="~fIw" class="" style="width:230px">Small to medium designs</td><td id="\LmJ" class="" style="width:230px">Large, full-chip SoC</td></tr></tbody></table><p id="1bfea88d-e67b-80d1-90b9-eeb3dcb1736d" class="">
+</p><ol type="1" id="1bfea88d-e67b-80ff-9e75-ed403d55ce75" class="numbered-list" start="23"><li>Explain the use of interfaces in SV.</li></ol><ul id="1bfea88d-e67b-80b8-9d6a-de8361258576" class="bulleted-list"><li style="list-style-type:disc">An <strong>interface</strong> is a <strong>container for signals and methods</strong> that are commonly shared between modules or between DUT and testbench components.</li></ul><ul id="1bfea88d-e67b-80c8-9a6c-c07a00759f6a" class="bulleted-list"><li style="list-style-type:disc">Why needed?<ul id="1bfea88d-e67b-80a5-9a76-fac06c44ca87" class="bulleted-list"><li style="list-style-type:circle">Avoid repeating long signal lists in module ports</li></ul><ul id="1bfea88d-e67b-80df-81c0-c7b2d3311791" class="bulleted-list"><li style="list-style-type:circle">Centralize bus or protocol definitions</li></ul><ul id="1bfea88d-e67b-80eb-9474-c908a28c47cf" class="bulleted-list"><li style="list-style-type:circle">Allow encapsulation of protocol behavior</li></ul></li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1bfea88d-e67b-8006-9558-d2591f75424a" class="code"><code class="language-Verilog">interface sample;
+	logic clk;
+	logic reset;
+	logic a;
+	logic b;
+	logic c;
+endinterface
+
+module mydut(sample intf);
+	always_ff (@posedge intf.clk) begin
+		intf.a &lt;= 1;
+	end
+endmodule
+
+module tb;
+	sample sintf();
+	mydut dut(.intf(sif));
+	
+	initial begin
+		sif.clk = 0;
+		forever #5 sif.clk = ~sif.clk;
+	end
+endmodule</code></pre><p id="1bfea88d-e67b-8085-8bca-cba4df03845a" class="">
+</p><ol type="1" id="1bfea88d-e67b-800d-8f38-fb4ac9048a87" class="numbered-list" start="24"><li>Moore and Mealy state machines</li></ol><ul id="1bfea88d-e67b-8021-8166-dc8042643d60" class="bulleted-list"><li style="list-style-type:disc"><strong>Moore</strong>: Output = <code>f(state)</code></li></ul><ul id="1bfea88d-e67b-809b-ad10-f08054cba7b7" class="bulleted-list"><li style="list-style-type:disc"><strong>Mealy</strong>: Output = <code>f(state, input)</code></li></ul><p id="1bfea88d-e67b-8052-82b8-f8105b65449d" class="">
+</p><ol type="1" id="1bfea88d-e67b-80dd-9041-ca5f26968b98" class="numbered-list" start="25"><li>Is run phase top down/bottom up?</li></ol><ul id="1bfea88d-e67b-8014-bbc7-cf33eee8fff4" class="bulleted-list"><li style="list-style-type:disc"><code>build_phase</code>: top-down</li></ul><ul id="1bfea88d-e67b-80b7-a183-e72fb855897d" class="bulleted-list"><li style="list-style-type:disc"><code>connect_phase</code>: top-down</li></ul><ul id="1bfea88d-e67b-80ba-953c-e30e25d677dc" class="bulleted-list"><li style="list-style-type:disc"><code>run_phase</code>: bottom-up</li></ul><p id="1c0ea88d-e67b-8087-a62c-c5840c69aa14" class="">
+</p><ol type="1" id="1bfea88d-e67b-8088-85f7-f9e808ce8096" class="numbered-list" start="26"><li>FF Verilog code</li></ol><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1c0ea88d-e67b-80b8-a0d7-c2574bfd5f2f" class="code"><code class="language-Verilog">module ff(input clk, input reset, input d, output q);
+	
+	always (@posedge clk or negedge reset) begin
+		if (reset) begin
+			q &lt;= 0;
+		end else if
+			q &lt;= d;
+		end
+	end
+
+endmodule</code></pre></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
